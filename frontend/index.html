@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>J.A.R.V.I.S Voice Assistant</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #050914;
+      color: #00eaff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      width: 95%;
+      max-width: 700px;
+      min-height: 90vh;
+      border: 1px solid #00eaff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 30px rgba(0, 234, 255, 0.25);
+      background: rgba(5, 9, 20, 0.95);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    .status {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #7ffaff;
+    }
+
+    .core {
+      width: 150px;
+      height: 150px;
+      margin: 25px auto;
+      border: 3px solid #00eaff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: pulse 2s infinite;
+      box-shadow:
+        0 0 15px #00eaff,
+        inset 0 0 20px #00eaff;
+    }
+
+    .core span {
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px #00eaff;
+      }
+
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 45px #00eaff;
+      }
+    }
+
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      min-height: 250px;
+      max-height: 430px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(0, 234, 255, 0.25);
+      border-radius: 12px;
+    }
+
+    .msg {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background: rgba(0, 150, 255, 0.15);
+      text-align: right;
+    }
+
+    .ai {
+      background: rgba(0, 255, 200, 0.10);
+      text-align: left;
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    #msg {
+      flex: 1;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+      outline: none;
+      background: #08101f;
+      color: white;
+      font-size: 15px;
+    }
+
+    button {
+      border: 1px solid #00eaff;
+      background: #071525;
+      color: #00eaff;
+      border-radius: 10px;
+      padding: 12px 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #00eaff;
+      color: #001018;
+    }
+
+    #mic-btn {
+      min-width: 70px;
+    }
+
+    .bottom {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .bottom button {
+      flex: 1;
+    }
+
+    @media (max-width: 500px) {
+      .app {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+      }
+
+      .core {
+        width: 120px;
+        height: 120px;
+      }
+
+      .controls {
+        flex-wrap: wrap;
+      }
+
+      #msg {
+        width: 100%;
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <header class="header">
+      <h1>J.A.R.V.I.S</h1>
+      <div class="status" id="status">
+        BRAIN: NOT CONNECTED
+      </div>
+    </header>
+
+    <div class="core">
+      <span>J</span>
+    </div>
+
+    <section id="chat">
+      <div class="msg ai">
+        J.A.R.V.I.S: Hello. I am ready.
+      </div>
+    </section>
+
+    <div class="controls">
+      <input
+        id="msg"
+        type="text"
+        placeholder="Type your message..."
+        autocomplete="off"
+      >
+
+      <button id="send">SEND</button>
+
+      <button id="mic-btn">🎤</button>
+    </div>
+
+    <div class="bottom">
+      <button id="voice-btn">🔊 TEST VOICE</button>
+      <button id="reset-key">🔐 RESET KEY</button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
